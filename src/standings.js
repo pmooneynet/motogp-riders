@@ -1,0 +1,26 @@
+const standings2024 = [
+  { pos: 1,  num: 89, name: "J. Martín",          flag: "🇪🇸", pts: 508 },
+  { pos: 2,  num: 1,  name: "F. Bagnaia",          flag: "🇮🇹", pts: 498 },
+  { pos: 3,  num: 93, name: "M. Márquez",          flag: "🇪🇸", pts: 392 },
+  { pos: 4,  num: 23, name: "E. Bastianini",       flag: "🇮🇹", pts: 290 },
+  { pos: 5,  num: 31, name: "P. Acosta",           flag: "🇪🇸", pts: 260 },
+  { pos: 6,  num: 33, name: "B. Binder",           flag: "🇿🇦", pts: 206 },
+  { pos: 7,  num: 72, name: "M. Bezzecchi",        flag: "🇮🇹", pts: 191 },
+  { pos: 8,  num: 20, name: "F. Quartararo",       flag: "🇫🇷", pts: 163 },
+  { pos: 9,  num: 42, name: "A. Rins",             flag: "🇪🇸", pts: 134 },
+  { pos: 10, num: 21, name: "F. Morbidelli",       flag: "🇮🇹", pts: 124 },
+  { pos: 11, num: 49, name: "F. Di Giannantonio",  flag: "🇮🇹", pts: 119 },
+  { pos: 12, num: 43, name: "J. Miller",           flag: "🇦🇺", pts: 115 },
+  { pos: 13, num: 88, name: "M. Oliveira",         flag: "🇵🇹", pts: 113 },
+  { pos: 14, num: 36, name: "J. Mir",              flag: "🇪🇸", pts: 80  },
+  { pos: 15, num: 12, name: "M. Viñales",          flag: "🇪🇸", pts: 79  },
+  { pos: 16, num: 41, name: "A. Espargaró",        flag: "🇪🇸", pts: 71  },
+  { pos: 17, num: 73, name: "A. Márquez",          flag: "🇪🇸", pts: 67  },
+  { pos: 18, num: 5,  name: "J. Zarco",            flag: "🇫🇷", pts: 58  },
+  { pos: 19, num: 10, name: "L. Marini",           flag: "🇮🇹", pts: 52  },
+  { pos: 20, num: 30, name: "T. Nakagami",         flag: "🇯🇵", pts: 30  },
+  { pos: 21, num: 37, name: "A. Fernández",        flag: "🇪🇸", pts: 24  },
+  { pos: 22, num: 25, name: "R. Fernández",        flag: "🇪🇸", pts: 23  },
+];
+
+export default standings2024;
