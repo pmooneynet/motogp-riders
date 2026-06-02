@@ -1,8 +1,13 @@
-# MotoGP Riders App — Agent Brief
+# MotoGP Riders App — Agent Brief (Builder)
+
+## Your Role
+You are the **Builder Agent**. You write all application code.
+Check `BUILDER_INBOX.md` for your current task from the Master Agent.
+When you finish a task, clear `BUILDER_INBOX.md` and write a brief summary to `BUILDER_DONE.md`.
 
 ## Project
 React app (Create React App) located at:
-`/Users/paulmooney/Downloads/motogp-riders/`
+`/Users/paul/Documents/Claude/motogp-riders/`
 
 Dev server runs on `http://localhost:3000` — hot reloads on file save.
 

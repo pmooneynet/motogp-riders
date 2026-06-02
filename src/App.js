@@ -25,10 +25,11 @@ function usePersistedState(key, defaultValue) {
 // Shared constants
 // ---------------------------------------------------------------------------
 const CLASS_OPTIONS = ["MotoGP", "Moto2", "Moto3", "125cc", "250cc", "500cc"];
-const EMPTY_RIDER  = { num: "", fn: "", ln: "", nat: "", flag: "", team: "", career: [] };
+const EMPTY_RIDER  = { num: "", fn: "", ln: "", aka: "", nat: "", flag: "", team: "", photo: "", overview: "", career: [] };
 const EMPTY_VENUE  = { id: "", name: "", city: "", country: "", flag: "", firstGP: "", active: true, culture: "" };
 const EMPTY_ENTRY  = { rider: "", num: "", nat: "", flag: "" };
 const EMPTY_DIARY  = { id: "", date: "", venueId: "", text: "" };
+const EMPTY_TEAM   = { id: "", name: "", role: "", bio: "", photo: "", contact: "" };
 
 // ---------------------------------------------------------------------------
 // ClsBadge
@@ -50,6 +51,8 @@ function Nav({ page, setPage, onHome }) {
         onClick={() => setPage("seasons")}>Seasons</button>
       <button className={`nav-link ${page === "venues" ? "nav-active" : ""}`}
         onClick={() => setPage("venues")}>Venues</button>
+      <button className={`nav-link ${page === "team" ? "nav-active" : ""}`}
+        onClick={() => setPage("team")}>Meet the Team</button>
       <button className={`nav-link ${page === "george" ? "nav-active" : ""}`}
         onClick={() => setPage("george")}>Dear George</button>
     </nav>
@@ -143,6 +146,23 @@ function RiderEditForm({ rider, isNew, onSave, onCancel, onDelete }) {
       </div>
 
       <div className="form-row">
+        <div className="form-group form-group-wide">
+          <label className="form-label">Also Known As</label>
+          <input className="form-input" value={form.aka || ""} onChange={set("aka")} placeholder="Nickname or alias…" />
+        </div>
+      </div>
+
+      <div className="form-row">
+        <div className="form-group form-group-wide">
+          <label className="form-label">Photo URL</label>
+          <div className="form-photo-row">
+            <input className="form-input" value={form.photo || ""} onChange={set("photo")} placeholder="https://…" />
+            {form.photo && <img src={form.photo} alt="preview" className="form-photo-preview" onError={(e) => { e.currentTarget.style.display = "none"; }} />}
+          </div>
+        </div>
+      </div>
+
+      <div className="form-row">
         <div className="form-group">
           <label className="form-label">Nationality</label>
           <input className="form-input" value={form.nat} onChange={set("nat")} />
@@ -150,6 +170,15 @@ function RiderEditForm({ rider, isNew, onSave, onCancel, onDelete }) {
         <div className="form-group form-group-wide">
           <label className="form-label">Team</label>
           <input className="form-input" value={form.team} onChange={set("team")} />
+        </div>
+      </div>
+
+      <div className="form-row">
+        <div className="form-group form-group-wide">
+          <label className="form-label">Overview <span style={{fontWeight:400,textTransform:'none',letterSpacing:0}}>(max 300 chars)</span></label>
+          <textarea className="form-input form-textarea" rows={3} maxLength={300}
+            value={form.overview || ""} onChange={set("overview")}
+            placeholder="A short bio or overview of this rider…" />
         </div>
       </div>
 
@@ -206,8 +235,12 @@ function RiderCard({ rider, onView, onEdit, isAdmin }) {
   return (
     <div className="rider-card-wrap">
       <button className="rider-card" onClick={onView}>
-        <div className="card-num">{rider.num}</div>
+        {rider.photo
+          ? <img src={rider.photo} alt={`${rider.fn} ${rider.ln}`} className="card-photo" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+          : <div className="card-num">{rider.num}</div>
+        }
         <div className="card-name"><span className="card-fn">{rider.fn} </span>{rider.ln}</div>
+        {rider.aka && <div className="card-aka">"{rider.aka}"</div>}
         <div className="card-team">{rider.team}</div>
         <div className="card-tags">
           <span className="tag tag-nat">{rider.flag} {rider.nat}</span>
@@ -234,9 +267,13 @@ function RiderDetail({ rider, onBack, onDelete, isAdmin }) {
       <div className="rider-header">
         <div className="header-bg-num">{rider.num}</div>
         <div className="header-top">
-          <div className="rider-badge">{initials}</div>
-          <div>
+          {rider.photo
+            ? <img src={rider.photo} alt={`${rider.fn} ${rider.ln}`} className="rider-badge rider-badge-photo" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+            : <div className="rider-badge">{initials}</div>
+          }
+          <div className="header-info">
             <div className="detail-name"><span className="detail-fn">{rider.fn} </span>{rider.ln}</div>
+            {rider.aka && <div className="detail-aka">"{rider.aka}"</div>}
             <div className="detail-team">{rider.team}</div>
             <div className="detail-tags">
               <span className="tag tag-nat">{rider.flag} {rider.nat}</span>
@@ -245,6 +282,11 @@ function RiderDetail({ rider, onBack, onDelete, isAdmin }) {
               {champs > 0 && <span className="tag tag-gold">🏆 {champs} title{champs > 1 ? "s" : ""}</span>}
             </div>
           </div>
+          {rider.overview && (
+            <div className="header-overview">
+              <p className="header-overview-text">{rider.overview}</p>
+            </div>
+          )}
         </div>
       </div>
       <h2 className="section-title">Career History</h2>
@@ -990,6 +1032,178 @@ function DearGeorgeView({ entries, setEntries, venues }) {
 }
 
 // ===========================================================================
+// MEET THE TEAM
+// ===========================================================================
+
+function TeamMemberForm({ member, isNew, onSave, onCancel, onDelete }) {
+  const [form, setForm] = useState({ ...member });
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
+  const set = (field) => (e) => setForm(f => ({ ...f, [field]: e.target.value }));
+  const canSave = form.name.trim();
+
+  const handleSave = () => {
+    if (!canSave) return;
+    const id = isNew ? Date.now().toString() : form.id;
+    onSave({ ...form, id });
+  };
+
+  return (
+    <div className="edit-form">
+      <div className="form-title">{isNew ? "New team member" : `Editing: ${member.name}`}</div>
+
+      <div className="form-row">
+        <div className="form-group form-group-wide">
+          <label className="form-label">Name</label>
+          <input className="form-input" value={form.name} onChange={set("name")} placeholder="Full name" />
+        </div>
+        <div className="form-group form-group-wide">
+          <label className="form-label">Role</label>
+          <input className="form-input" value={form.role} onChange={set("role")} placeholder="Job title" />
+        </div>
+      </div>
+
+      <div className="form-group">
+        <label className="form-label">Bio</label>
+        <textarea className="form-input form-textarea" rows={3} value={form.bio} onChange={set("bio")} />
+      </div>
+
+      <div className="form-row">
+        <div className="form-group form-group-wide">
+          <label className="form-label">Photo URL</label>
+          <input className="form-input" value={form.photo} onChange={set("photo")} placeholder="https://…" />
+        </div>
+        <div className="form-group form-group-wide">
+          <label className="form-label">Contact URL</label>
+          <input className="form-input" value={form.contact} onChange={set("contact")} placeholder="mailto: or https://…" />
+        </div>
+      </div>
+
+      <div className="form-actions">
+        <button className="btn-save" onClick={handleSave} disabled={!canSave}>Save</button>
+        <button className="btn-cancel" onClick={onCancel}>Cancel</button>
+        {!isNew && (
+          confirmDelete
+            ? <span className="delete-confirm">
+                Delete this member?{" "}
+                <button className="btn-confirm-delete" onClick={() => onDelete(member.id)}>Yes, delete</button>{" "}
+                <button className="btn-cancel" onClick={() => setConfirmDelete(false)}>No</button>
+              </span>
+            : <button className="btn-delete" onClick={() => setConfirmDelete(true)}>Delete member</button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function TeamMemberCard({ member, onEdit, onDelete }) {
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const initials = member.name.trim().split(/\s+/).filter(Boolean).map(n => n[0]).join("").slice(0, 2).toUpperCase() || "?";
+
+  return (
+    <div className="team-card-wrap">
+      <div
+        className="team-card"
+        role="button"
+        tabIndex={0}
+        onClick={onEdit}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onEdit(); } }}
+      >
+        <div className="team-card-photo">
+          {member.photo
+            ? <img src={member.photo} alt={member.name} className="team-photo-img" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+            : <div className="rider-badge">{initials}</div>
+          }
+        </div>
+        <div className="team-card-name">{member.name}</div>
+        {member.role && <div className="team-card-role">{member.role}</div>}
+        {member.bio && <div className="team-card-bio">{member.bio}</div>}
+        {member.contact && (
+          <a
+            href={member.contact}
+            className="team-card-contact"
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {member.contact.startsWith("mailto:") ? member.contact.replace("mailto:", "") : "Contact →"}
+          </a>
+        )}
+      </div>
+      {confirmDelete ? (
+        <span className="team-delete-confirm delete-confirm">
+          Delete?{" "}
+          <button className="btn-confirm-delete" onClick={() => onDelete(member.id)}>Yes</button>{" "}
+          <button className="btn-cancel" onClick={() => setConfirmDelete(false)}>No</button>
+        </span>
+      ) : (
+        <>
+          <button className="card-edit-btn" onClick={onEdit} aria-label={`Edit ${member.name}`}>✏️</button>
+          <button className="card-delete-btn" onClick={() => setConfirmDelete(true)} aria-label={`Delete ${member.name}`}>✕</button>
+        </>
+      )}
+    </div>
+  );
+}
+
+function MeetTheTeamView({ team, setTeam }) {
+  const [editingId, setEditingId] = useState(null);
+  const [adding, setAdding] = useState(false);
+
+  const addMember = (newMember) => {
+    setTeam(ms => [...ms, newMember]);
+    setAdding(false);
+  };
+
+  const saveMember = (updated) => {
+    setTeam(ms => ms.map(m => m.id === updated.id ? updated : m));
+    setEditingId(null);
+  };
+
+  const deleteMember = (id) => {
+    setTeam(ms => ms.filter(m => m.id !== id));
+    setEditingId(null);
+  };
+
+  return (
+    <>
+      <div className="stats-bar">
+        <div className="stat"><div className="stat-n red">{team.length}</div><div className="stat-l">Team Members</div></div>
+      </div>
+
+      <div className="section-actions">
+        <button className="btn-add" onClick={() => { setAdding(true); setEditingId(null); }}>+ Add team member</button>
+      </div>
+
+      {(adding || editingId !== null) && (
+        <TeamMemberForm
+          member={adding ? EMPTY_TEAM : team.find(m => m.id === editingId)}
+          isNew={adding}
+          onSave={adding ? addMember : saveMember}
+          onCancel={() => { setAdding(false); setEditingId(null); }}
+          onDelete={deleteMember}
+        />
+      )}
+
+      {team.length === 0 ? (
+        <div className="no-results">No team members yet</div>
+      ) : (
+        <div className="grid">
+          {team.map(m => (
+            <TeamMemberCard
+              key={m.id}
+              member={m}
+              onEdit={() => { setEditingId(m.id); setAdding(false); }}
+              onDelete={deleteMember}
+            />
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
+
+// ===========================================================================
 // ComingSoon / App
 // ===========================================================================
 
@@ -999,6 +1213,7 @@ export default function App() {
   const [venues, setVenues] = usePersistedState("mgp_venues", defaultVenues);
   const [races,  setRaces]  = usePersistedState("mgp_races",  defaultRaces);
   const [diary,  setDiary]  = usePersistedState("mgp_diary",  []);
+  const [team,   setTeam]   = usePersistedState("mgp_team",   []);
   const isAdmin = true;
 
   const [page, setPage] = useState("riders");
@@ -1009,17 +1224,24 @@ export default function App() {
     <div className="app">
       <a href="#main-content" className="skip-link">Skip to main content</a>
       <header className="hero">
-        <p className="hero-label">Riders Encyclopedia</p>
-        <h1
-          className="hero-title home-link"
-          role="button"
-          tabIndex={0}
-          onClick={() => { setPage("riders"); handleHome(); }}
-          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setPage("riders"); handleHome(); } }}
-        >
-          MOTO<span className="red">GP</span> RIDERS
-        </h1>
-        <Nav page={page} setPage={setPage} onHome={handleHome} />
+        <div className="hero-inner">
+          <img
+            src="https://i.scdn.co/image/ab6765630000ba8aa1dcfc18b0d37b73d5c32eb6"
+            alt="MotoPG Podcast"
+            className="hero-logo-img home-link"
+            role="button"
+            tabIndex={0}
+            onClick={() => { setPage("riders"); handleHome(); }}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setPage("riders"); handleHome(); } }}
+          />
+          <div className="hero-text">
+            <p className="hero-label">The most hilarious and informative MotoGP podcast in the universe</p>
+            <h1 className="hero-title">
+              GIZ <span className="red">WEBSITE</span>!
+            </h1>
+            <Nav page={page} setPage={setPage} onHome={handleHome} />
+          </div>
+        </div>
       </header>
 
       <div className="page-layout">
@@ -1033,6 +1255,7 @@ export default function App() {
           {page === "riders"  && <RidersView riders={riders} setRiders={setRiders} isAdmin={isAdmin} selected={selected} setSelected={setSelected} />}
           {page === "seasons" && <SeasonsView races={races} setRaces={setRaces} venues={venues} isAdmin={isAdmin} />}
           {page === "venues"  && <VenuesView venues={venues} setVenues={setVenues} races={races} isAdmin={isAdmin} />}
+          {page === "team"    && <MeetTheTeamView team={team} setTeam={setTeam} />}
           {page === "george"  && <DearGeorgeView entries={diary} setEntries={setDiary} venues={venues} />}
         </main>
       </div>

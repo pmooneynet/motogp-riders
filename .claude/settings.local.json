@@ -19,7 +19,12 @@
       "Bash(gh repo *)",
       "Bash(gh issue *)",
       "Bash(gh project *)",
-      "Bash(gh api *)"
+      "Bash(gh api *)",
+      "Bash(node *)",
+      "Bash(lsof -ti:3000)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(npm install *)",
+      "Bash(npx playwright *)"
     ]
   }
 }

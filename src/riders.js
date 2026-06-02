@@ -1,9 +1,14 @@
+const LOREM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.";
+
 const riders = [
 
   // ── CURRENT GRID ──────────────────────────────────────────────────────────
 
   {
     num: 93, fn: "Marc", ln: "Márquez", nat: "Spain", flag: "🇪🇸",
+    aka: "The Baby Alien",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Marc_Marquez_at_the_2026_Spanish_Grand_Prix_%28cropped%29.jpg/500px-Marc_Marquez_at_the_2026_Spanish_Grand_Prix_%28cropped%29.jpg",
+    overview: LOREM,
     team: "Gresini Racing MotoGP",
     career: [
       { year: 2024, team: "Gresini Racing MotoGP", cls: "MotoGP", pos: "3rd" },
@@ -26,6 +31,9 @@ const riders = [
   },
   {
     num: 1, fn: "Francesco", ln: "Bagnaia", nat: "Italy", flag: "🇮🇹",
+    aka: "Pecco",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Pecco_Bagnaia_at_the_2026_Spanish_Grand_Prix.jpg/500px-Pecco_Bagnaia_at_the_2026_Spanish_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Ducati Lenovo Team",
     career: [
       { year: 2024, team: "Ducati Lenovo Team", cls: "MotoGP", pos: "2nd" },
@@ -40,6 +48,9 @@ const riders = [
   },
   {
     num: 89, fn: "Jorge", ln: "Martín", nat: "Spain", flag: "🇪🇸",
+    aka: "Martinator",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Jorge_Martin_at_the_2026_Spanish_Grand_Prix.jpg/500px-Jorge_Martin_at_the_2026_Spanish_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Aprilia Racing",
     career: [
       { year: 2024, team: "Prima Pramac Racing", cls: "MotoGP", pos: "🥇 Champion" },
@@ -52,6 +63,9 @@ const riders = [
   },
   {
     num: 36, fn: "Joan", ln: "Mir", nat: "Spain", flag: "🇪🇸",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Joan_Mir_at_the_2025_Malaysian_Grand_Prix.jpg/500px-Joan_Mir_at_the_2025_Malaysian_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Repsol Honda Team",
     career: [
       { year: 2024, team: "Repsol Honda Team", cls: "MotoGP", pos: "14th" },
@@ -65,6 +79,9 @@ const riders = [
   },
   {
     num: 20, fn: "Fabio", ln: "Quartararo", nat: "France", flag: "🇫🇷",
+    aka: "El Diablo",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Fabio_Quartararo_at_the_2023_Japanese_motorcycle_Grand_Prix.jpg/500px-Fabio_Quartararo_at_the_2023_Japanese_motorcycle_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Monster Energy Yamaha MotoGP",
     career: [
       { year: 2024, team: "Monster Energy Yamaha MotoGP", cls: "MotoGP", pos: "8th" },
@@ -79,6 +96,9 @@ const riders = [
   },
   {
     num: 41, fn: "Aleix", ln: "Espargaró", nat: "Spain", flag: "🇪🇸",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Aleix_Espargaro_at_the_2022_San_Marino_Grand_Prix_at_Misano.jpg/500px-Aleix_Espargaro_at_the_2022_San_Marino_Grand_Prix_at_Misano.jpg",
+    overview: LOREM,
     team: "Aprilia Racing",
     career: [
       { year: 2024, team: "Aprilia Racing", cls: "MotoGP", pos: "4th" },
@@ -93,6 +113,9 @@ const riders = [
   },
   {
     num: 12, fn: "Maverick", ln: "Viñales", nat: "Spain", flag: "🇪🇸",
+    aka: "Top Gun",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Maverick_Vi%C3%B1ales_at_the_2025_Italian_motorcycle_Grand_Prix_%28cropped%29.jpg/500px-Maverick_Vi%C3%B1ales_at_the_2025_Italian_motorcycle_Grand_Prix_%28cropped%29.jpg",
+    overview: LOREM,
     team: "Aprilia Racing",
     career: [
       { year: 2024, team: "Aprilia Racing", cls: "MotoGP", pos: "6th" },
@@ -109,6 +132,9 @@ const riders = [
   },
   {
     num: 88, fn: "Miguel", ln: "Oliveira", nat: "Portugal", flag: "🇵🇹",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Miguel_Oliveira_at_the_2025_Malaysian_Grand_Prix.jpg/500px-Miguel_Oliveira_at_the_2025_Malaysian_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Trackhouse Racing",
     career: [
       { year: 2024, team: "Trackhouse Racing", cls: "MotoGP", pos: "10th" },
@@ -122,6 +148,9 @@ const riders = [
   },
   {
     num: 33, fn: "Brad", ln: "Binder", nat: "South Africa", flag: "🇿🇦",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Brad_Binder_at_the_2023_Japanese_motorcycle_Grand_Prix.jpg/500px-Brad_Binder_at_the_2023_Japanese_motorcycle_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Red Bull KTM Factory Racing",
     career: [
       { year: 2024, team: "Red Bull KTM Factory Racing", cls: "MotoGP", pos: "5th" },
@@ -135,6 +164,9 @@ const riders = [
   },
   {
     num: 5, fn: "Johann", ln: "Zarco", nat: "France", flag: "🇫🇷",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Johann_Zarco_at_the_2025_Malaysian_Grand_Prix.jpg/500px-Johann_Zarco_at_the_2025_Malaysian_Grand_Prix.jpg",
+    overview: LOREM,
     team: "LCR Honda Castrol",
     career: [
       { year: 2024, team: "LCR Honda Castrol", cls: "MotoGP", pos: "18th" },
@@ -151,6 +183,9 @@ const riders = [
   },
   {
     num: 43, fn: "Jack", ln: "Miller", nat: "Australia", flag: "🇦🇺",
+    aka: "Thriller Miller",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jack_Miller_at_the_2025_Malaysian_Grand_Prix.jpg/500px-Jack_Miller_at_the_2025_Malaysian_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Red Bull KTM Factory Racing",
     career: [
       { year: 2024, team: "Red Bull KTM Factory Racing", cls: "MotoGP", pos: "12th" },
@@ -165,6 +200,9 @@ const riders = [
   },
   {
     num: 23, fn: "Enea", ln: "Bastianini", nat: "Italy", flag: "🇮🇹",
+    aka: "The Beast",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Enea_Bastianini_at_the_2026_Spanish_Grand_Prix.jpg/500px-Enea_Bastianini_at_the_2026_Spanish_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Ducati Lenovo Team",
     career: [
       { year: 2024, team: "Ducati Lenovo Team", cls: "MotoGP", pos: "9th" },
@@ -177,6 +215,9 @@ const riders = [
   },
   {
     num: 25, fn: "Raúl", ln: "Fernández", nat: "Spain", flag: "🇪🇸",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Raul_Fernandez_at_the_2025_Malaysian_motorcycle_Grand_Prix.jpg/500px-Raul_Fernandez_at_the_2025_Malaysian_motorcycle_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Trackhouse Racing",
     career: [
       { year: 2024, team: "Trackhouse Racing", cls: "MotoGP", pos: "13th" },
@@ -187,6 +228,9 @@ const riders = [
   },
   {
     num: 37, fn: "Augusto", ln: "Fernández", nat: "Spain", flag: "🇪🇸",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Augusto_Fernandez.JPG/500px-Augusto_Fernandez.JPG",
+    overview: LOREM,
     team: "Tech3 GasGas Factory Racing",
     career: [
       { year: 2024, team: "Tech3 GasGas Factory Racing", cls: "MotoGP", pos: "20th" },
@@ -196,6 +240,9 @@ const riders = [
   },
   {
     num: 72, fn: "Marco", ln: "Bezzecchi", nat: "Italy", flag: "🇮🇹",
+    aka: "The Bez",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Marco_Bezzecchi_at_the_2025_Malaysian_motorcycle_Grand_Prix.jpg/500px-Marco_Bezzecchi_at_the_2025_Malaysian_motorcycle_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Pertamina Enduro VR46 Racing Team",
     career: [
       { year: 2024, team: "Pertamina Enduro VR46 Racing Team", cls: "MotoGP", pos: "7th" },
@@ -209,6 +256,9 @@ const riders = [
 
   {
     num: 31, fn: "Pedro", ln: "Acosta", nat: "Spain", flag: "🇪🇸",
+    aka: "The Shark",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Pedro_Acosta_at_the_2025_Italian_motorcycle_Grand_Prix.jpg/500px-Pedro_Acosta_at_the_2025_Italian_motorcycle_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Red Bull GasGas Tech3",
     career: [
       { year: 2024, team: "Red Bull GasGas Tech3", cls: "MotoGP", pos: "6th" },
@@ -219,6 +269,9 @@ const riders = [
   },
   {
     num: 49, fn: "Fabio", ln: "Di Giannantonio", nat: "Italy", flag: "🇮🇹",
+    aka: "Diggia",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Fabio_Di_Giannantonio_at_the_2025_Malaysian_motorcycle_Grand_Prix.jpg/500px-Fabio_Di_Giannantonio_at_the_2025_Malaysian_motorcycle_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Pertamina Enduro VR46 Racing Team",
     career: [
       { year: 2024, team: "Pertamina Enduro VR46 Racing Team", cls: "MotoGP", pos: "11th" },
@@ -229,6 +282,9 @@ const riders = [
   },
   {
     num: 10, fn: "Luca", ln: "Marini", nat: "Italy", flag: "🇮🇹",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Luca_Marini_at_the_2025_Malaysian_Grand_Prix.jpg/500px-Luca_Marini_at_the_2025_Malaysian_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Repsol Honda Team",
     career: [
       { year: 2024, team: "Repsol Honda Team", cls: "MotoGP", pos: "21st" },
@@ -241,6 +297,9 @@ const riders = [
   },
   {
     num: 73, fn: "Alex", ln: "Márquez", nat: "Spain", flag: "🇪🇸",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Alex_Marquez_2023.jpg",
+    overview: LOREM,
     team: "Gresini Racing MotoGP",
     career: [
       { year: 2024, team: "Gresini Racing MotoGP", cls: "MotoGP", pos: "9th" },
@@ -255,6 +314,9 @@ const riders = [
   },
   {
     num: 21, fn: "Franco", ln: "Morbidelli", nat: "Italy", flag: "🇮🇹",
+    aka: "Morbido",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Franco_Morbidelli_at_the_2025_Malaysian_Grand_Prix.jpg/500px-Franco_Morbidelli_at_the_2025_Malaysian_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Prima Pramac Racing",
     career: [
       { year: 2024, team: "Prima Pramac Racing", cls: "MotoGP", pos: "9th" },
@@ -269,6 +331,9 @@ const riders = [
   },
   {
     num: 42, fn: "Alex", ln: "Rins", nat: "Spain", flag: "🇪🇸",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Alex_Rins_at_the_2023_Japanese_motorcycle_Grand_Prix.jpg/500px-Alex_Rins_at_the_2023_Japanese_motorcycle_Grand_Prix.jpg",
+    overview: LOREM,
     team: "Monster Energy Yamaha MotoGP",
     career: [
       { year: 2024, team: "Monster Energy Yamaha MotoGP", cls: "MotoGP", pos: "16th" },
@@ -285,6 +350,9 @@ const riders = [
   },
   {
     num: 30, fn: "Takaaki", ln: "Nakagami", nat: "Japan", flag: "🇯🇵",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Takaaki_Nakagami_at_the_2023_Japanese_motorcycle_Grand_Prix.jpg/500px-Takaaki_Nakagami_at_the_2023_Japanese_motorcycle_Grand_Prix.jpg",
+    overview: LOREM,
     team: "LCR Honda Idemitsu",
     career: [
       { year: 2024, team: "LCR Honda Idemitsu", cls: "MotoGP", pos: "19th" },
@@ -302,6 +370,9 @@ const riders = [
 
   {
     num: 46, fn: "Valentino", ln: "Rossi", nat: "Italy", flag: "🇮🇹",
+    aka: "The Doctor",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Valentino_Rossi_2024_WEC_Fuji_6.jpg/500px-Valentino_Rossi_2024_WEC_Fuji_6.jpg",
+    overview: LOREM,
     team: "Petronas Yamaha SRT (retired 2021)",
     career: [
       { year: 2021, team: "Petronas Yamaha SRT", cls: "MotoGP", pos: "18th" },
@@ -331,6 +402,9 @@ const riders = [
   },
   {
     num: 99, fn: "Jorge", ln: "Lorenzo", nat: "Spain", flag: "🇪🇸",
+    aka: "Il Diablo",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Despedida_Jorge_Lorenzo_2019_%28cropped%29.jpg/500px-Despedida_Jorge_Lorenzo_2019_%28cropped%29.jpg",
+    overview: LOREM,
     team: "Repsol Honda Team (retired 2019)",
     career: [
       { year: 2019, team: "Repsol Honda Team", cls: "MotoGP", pos: "DNF (retired)" },
@@ -352,6 +426,9 @@ const riders = [
   },
   {
     num: 27, fn: "Casey", ln: "Stoner", nat: "Australia", flag: "🇦🇺",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Casey_Stoner_-_2011_MotoGP_World_Champion.jpg/500px-Casey_Stoner_-_2011_MotoGP_World_Champion.jpg",
+    overview: LOREM,
     team: "Repsol Honda Team (retired 2012)",
     career: [
       { year: 2012, team: "Repsol Honda Team", cls: "MotoGP", pos: "3rd" },
@@ -365,6 +442,9 @@ const riders = [
   },
   {
     num: 26, fn: "Dani", ln: "Pedrosa", nat: "Spain", flag: "🇪🇸",
+    aka: "The Little Samurai",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Dani_Pedrosa_2018.jpg/500px-Dani_Pedrosa_2018.jpg",
+    overview: LOREM,
     team: "Repsol Honda Team (retired 2018)",
     career: [
       { year: 2018, team: "Repsol Honda Team", cls: "MotoGP", pos: "10th" },
@@ -387,6 +467,9 @@ const riders = [
   },
   {
     num: 69, fn: "Nicky", ln: "Hayden", nat: "USA", flag: "🇺🇸",
+    aka: "The Kentucky Kid",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Hayden_2016_alternate.jpg/500px-Hayden_2016_alternate.jpg",
+    overview: LOREM,
     team: "Aspar Team MotoGP (†2017)",
     career: [
       { year: 2016, team: "Aspar Team MotoGP", cls: "MotoGP", pos: "19th" },
@@ -405,6 +488,9 @@ const riders = [
   },
   {
     num: 4, fn: "Andrea", ln: "Dovizioso", nat: "Italy", flag: "🇮🇹",
+    aka: "DesmoDovi",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Andrea_Dovizioso_talks_to_media.jpg/500px-Andrea_Dovizioso_talks_to_media.jpg",
+    overview: LOREM,
     team: "WithU Yamaha RNF (retired 2022)",
     career: [
       { year: 2022, team: "WithU Yamaha RNF MotoGP", cls: "MotoGP", pos: "21st" },
@@ -429,6 +515,9 @@ const riders = [
 
   {
     num: 58, fn: "Marco", ln: "Simoncelli", nat: "Italy", flag: "🇮🇹",
+    aka: "Super Sic",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Marco_Simoncelli%2C_Silverstone_2011.jpg/500px-Marco_Simoncelli%2C_Silverstone_2011.jpg",
+    overview: LOREM,
     team: "San Carlo Honda Gresini (†2011)",
     career: [
       { year: 2011, team: "San Carlo Honda Gresini", cls: "MotoGP", pos: "DNF (†)" },
@@ -440,6 +529,9 @@ const riders = [
   },
   {
     num: 9, fn: "Danilo", ln: "Petrucci", nat: "Italy", flag: "🇮🇹",
+    aka: "Petrux",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Danilo_Petrucci%2C_Donington_SBK_2023.jpg/500px-Danilo_Petrucci%2C_Donington_SBK_2023.jpg",
+    overview: LOREM,
     team: "Tech3 KTM Factory Racing (retired 2021)",
     career: [
       { year: 2021, team: "Tech3 KTM Factory Racing", cls: "MotoGP", pos: "21st" },
@@ -454,6 +546,9 @@ const riders = [
   },
   {
     num: 35, fn: "Cal", ln: "Crutchlow", nat: "Great Britain", flag: "🇬🇧",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Crutchlow_COTA_2015.jpg/500px-Crutchlow_COTA_2015.jpg",
+    overview: LOREM,
     team: "LCR Honda (retired 2020)",
     career: [
       { year: 2020, team: "LCR Honda Castrol", cls: "MotoGP", pos: "8th" },
@@ -470,6 +565,9 @@ const riders = [
   },
   {
     num: 44, fn: "Pol", ln: "Espargaró", nat: "Spain", flag: "🇪🇸",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Pol_Espargar%C3%B3_portrait_2022_%28cropped%29.jpg/500px-Pol_Espargar%C3%B3_portrait_2022_%28cropped%29.jpg",
+    overview: LOREM,
     team: "GasGas Factory Racing Tech3 (retired 2023)",
     career: [
       { year: 2023, team: "GasGas Factory Racing Tech3", cls: "MotoGP", pos: "23rd" },
@@ -488,6 +586,9 @@ const riders = [
   },
   {
     num: 19, fn: "Álvaro", ln: "Bautista", nat: "Spain", flag: "🇪🇸",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Alvaro_Bautista%2C_2022.jpg/500px-Alvaro_Bautista%2C_2022.jpg",
+    overview: LOREM,
     team: "Aprilia Racing Team Gresini (ret. MotoGP 2018)",
     career: [
       { year: 2018, team: "Angel Nieto Team", cls: "MotoGP", pos: "12th" },
@@ -504,6 +605,9 @@ const riders = [
   },
   {
     num: 29, fn: "Andrea", ln: "Iannone", nat: "Italy", flag: "🇮🇹",
+    aka: "The Maniac",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Andrea_Iannone%2C_2024.jpg/500px-Andrea_Iannone%2C_2024.jpg",
+    overview: LOREM,
     team: "Aprilia Racing Team Gresini (suspended 2020)",
     career: [
       { year: 2019, team: "Aprilia Racing Team Gresini", cls: "MotoGP", pos: "16th" },
@@ -519,6 +623,9 @@ const riders = [
   },
   {
     num: 6, fn: "Stefan", ln: "Bradl", nat: "Germany", flag: "🇩🇪",
+    aka: "",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Stefan_Bradl_2022_%28cropped%29.jpg/500px-Stefan_Bradl_2022_%28cropped%29.jpg",
+    overview: LOREM,
     team: "HRC Test Rider",
     career: [
       { year: 2019, team: "Aprilia Racing Team Gresini", cls: "MotoGP", pos: "15th" },
@@ -535,6 +642,9 @@ const riders = [
   },
   {
     num: 11, fn: "Ben", ln: "Spies", nat: "USA", flag: "🇺🇸",
+    aka: "Elbowz",
+    photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ben_Spies_2010_Qatar.jpg/500px-Ben_Spies_2010_Qatar.jpg",
+    overview: LOREM,
     team: "Ignite Pramac Ducati (retired 2013)",
     career: [
       { year: 2013, team: "Ignite Pramac Racing", cls: "MotoGP", pos: "DNF (injury)" },
