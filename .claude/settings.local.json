@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(deep-research)",
+      "WebSearch",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:motorsportstats.com)",
+      "WebFetch(domain:www.crash.net)",
+      "WebFetch(domain:www.motorsport.com)",
+      "WebFetch(domain:www.race-database.com)",
+      "WebFetch(domain:motogp.fandom.com)",
+      "WebFetch(domain:www.motorsportsetc.com)",
+      "Bash(npm start *)",
+      "Bash(npx react-scripts *)",
+      "WebFetch(domain:www.gov.uk)",
+      "WebFetch(domain:design-system.service.gov.uk)",
+      "Bash(npm run *)",
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(gh issue *)",
+      "Bash(gh project *)",
+      "Bash(gh api *)"
+    ]
+  }
+}

@@ -902,13 +902,13 @@ function DearGeorgeView({ entries, setEntries, venues }) {
       <td colSpan={4} className="diary-form-cell">
         <div className="diary-form">
           <div className="diary-form-row">
-            <label className="diary-label">Date</label>
-            <input type="date" className="diary-date-input"
+            <label className="diary-label" htmlFor="diary-date">Date</label>
+            <input id="diary-date" type="date" className="diary-date-input"
               value={form.date} onChange={e => setForm(f => ({ ...f, date: e.target.value }))} />
           </div>
           <div className="diary-form-row">
-            <label className="diary-label">Location</label>
-            <select className="diary-select"
+            <label className="diary-label" htmlFor="diary-venue">Location</label>
+            <select id="diary-venue" className="diary-select"
               value={form.venueId} onChange={e => setForm(f => ({ ...f, venueId: e.target.value }))}>
               <option value="">— no location —</option>
               {[...venues].sort((a, b) => a.name.localeCompare(b.name)).map(v => (
@@ -917,8 +917,8 @@ function DearGeorgeView({ entries, setEntries, venues }) {
             </select>
           </div>
           <div className="diary-form-row diary-form-row--full">
-            <label className="diary-label">Entry</label>
-            <textarea className="diary-textarea"
+            <label className="diary-label" htmlFor="diary-text">Entry</label>
+            <textarea id="diary-text" className="diary-textarea"
               rows={8} placeholder="Dear George…"
               value={form.text} onChange={e => setForm(f => ({ ...f, text: e.target.value }))} />
           </div>
